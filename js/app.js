@@ -10,8 +10,36 @@ const radioButtons = document.querySelectorAll("input[name='film-filter']");
 
 // add the movies to the movie list in the DOM
 const addMoviesToDom = (movies) => {
-  movieList.appendChild(movies);
+  
+  const movieListItems = document.querySelectorAll("#movie-list li");
+
+  console.log("Movie list items: ", movieListItems);
+  movieListItems.forEach((movieListItem) => movieListItem.remove());
+
+  console.log("Ontvangen films", movies)
+  const movieItems = movies.map((movie) => {
+    const moviePoster = movie.Poster;
+    const movieItem = document.createElement("li");
+    const movieImg = document.createElement("img");
+    const movieLink = document.createElement("a");
+    movieItem.appendChild(movieLink).appendChild(movieImg);
+    movieID = movie.imdbID;
+    const link = "https://www.imdb.com/title/" + movieID;
+    movieLink.href = link;
+    movieLink.target = "_blank";
+    movieImg.src = moviePoster;
+    return movieItem;
+  });
+
+  movieItems.forEach((movieItem) => {
+    movieList.appendChild(movieItem);
+  })
+  
 };
+
+addMoviesToDom(movies);
+
+  
 
 // get the url for the poster of each movie from the movies database
 // create an li with an img element with the poster url as src
@@ -27,8 +55,9 @@ const getMoviePosters = movies.map((movie) => {
   movieLink.href = link;
   movieLink.target = "_blank";
   movieImg.src = moviePoster;
-  addMoviesToDom(movieItem);
+  // addMoviesToDom(movieItem);
 });
+
 
 
 // receive the selected element
@@ -38,21 +67,26 @@ const handleOnChangeEvent = (event) => {
   switch (event.target.value) {
     case "latest":
       console.log("hey ik ben Latest film");
+      filterLatestMovies();
       break;
     case "avenger":
       console.log("hey ik ben Avneger film");
+      filterMovies("Avengers");
       break;
     case "xmen":
       console.log("hey ik ben X-men film");
+      filterMovies("X-Men");
       break;
     case "princess":
       console.log("hey ik ben Princess film");
+      filterMovies("Princess");
       break;
     case "batman":
       console.log("hey ik ben Batman film");
+      filterMovies("Batman");
       break;
     default:
-      console.log("DEFAULT");
+      console.log("all");
   } 
 };
 
@@ -66,3 +100,29 @@ radioButtons.forEach((radioButton) => {
 };
 
 addEventListeners();
+
+
+
+const filterMovies = (wordInMovieTitle) => {
+  console.log("My value is", wordInMovieTitle);
+    const getFilteredMovies = movies
+      .filter((movie) => movie.Title.includes(wordInMovieTitle))
+      .map((movie) => {
+        return movie;
+      });
+
+    addMoviesToDom(getFilteredMovies);
+};
+
+const filterLatestMovies = () => {
+  const getLatestMovies = movies
+  .filter((movie) => movie.Year > 2013)
+  .map((movie) => movie);
+
+  console.log("Layest movies: ", getLatestMovies);
+  addMoviesToDom(getLatestMovies);
+};
+
+const removeAllMovies = () => {
+  
+};
