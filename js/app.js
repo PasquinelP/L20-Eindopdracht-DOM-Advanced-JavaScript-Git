@@ -8,25 +8,41 @@ console.log(movies);
 const movieList = document.querySelector("#movie-list");
 const radioButtons = document.querySelectorAll("input[name='film-filter']");
 
-// add the movies to the movie list in the DOM
-const addMoviesToDom = (movies) => {
-  
+
+const createMovieLink = (movieID) => {
+  const link = "https://www.imdb.com/title/" + movieID;
+  const movieLink = document.createElement("a");
+  movieLink.href = link;
+  movieLink.target = "_blank";
+  return movieLink;
+};
+
+const removeAllMovies = () => {
   const movieListItems = document.querySelectorAll("#movie-list li");
 
   console.log("Movie list items: ", movieListItems);
   movieListItems.forEach((movieListItem) => movieListItem.remove());
+};
+
+// add the movies to the movie list in the DOM
+const addMoviesToDom = (movies) => {
+  
+  removeAllMovies();
 
   console.log("Ontvangen films", movies)
   const movieItems = movies.map((movie) => {
     const moviePoster = movie.Poster;
+    const movieID = movie.imdbID;
+    
     const movieItem = document.createElement("li");
     const movieImg = document.createElement("img");
-    const movieLink = document.createElement("a");
+    const movieLink = createMovieLink(movieID);
+    // const movieLink = document.createElement("a");
     movieItem.appendChild(movieLink).appendChild(movieImg);
-    movieID = movie.imdbID;
-    const link = "https://www.imdb.com/title/" + movieID;
-    movieLink.href = link;
-    movieLink.target = "_blank";
+    
+    // const link = "https://www.imdb.com/title/" + movieID;
+    // movieLink.href = link;
+    // movieLink.target = "_blank";
     movieImg.src = moviePoster;
     return movieItem;
   });
@@ -39,7 +55,10 @@ const addMoviesToDom = (movies) => {
 
 addMoviesToDom(movies);
 
-  
+
+
+ 
+// createMovieLink(12345);
 
 // get the url for the poster of each movie from the movies database
 // create an li with an img element with the poster url as src
@@ -107,9 +126,7 @@ const filterMovies = (wordInMovieTitle) => {
   console.log("My value is", wordInMovieTitle);
     const getFilteredMovies = movies
       .filter((movie) => movie.Title.includes(wordInMovieTitle))
-      .map((movie) => {
-        return movie;
-      });
+      .map((movie) => movie);
 
     addMoviesToDom(getFilteredMovies);
 };
@@ -123,6 +140,3 @@ const filterLatestMovies = () => {
   addMoviesToDom(getLatestMovies);
 };
 
-const removeAllMovies = () => {
-  
-};
