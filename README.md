@@ -35,5 +35,4 @@ Aan deze eisen moet jouw project voldoen:
 
 **Focus je eerst op de functionaliteiten en JavaScript, voordat je gaat beginnen met stylen.**
 
-## Design 
 
