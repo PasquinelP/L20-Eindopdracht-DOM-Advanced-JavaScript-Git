@@ -1,3 +1,7 @@
+/* ------------------------------- 
+             $Base 
+   ------------------------------- */
+
 *,
 *::before,
 *::after {
@@ -9,11 +13,65 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
   color: #fff;
   background-color: #000;
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  margin: 0 15px;
+}
+
+/* ------------------------------- 
+             $Header 
+   ------------------------------- */
+
+.brand {
+  position: relative;
+  padding: 10px 0;
+  border-bottom: 1px solid #fff;
+}
+
+.brand img {
+  width: 42px;
+  position: absolute;
+}
+
+.brand a {
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+  margin: 0 0 0 50px;
+}
+
+h2 {
+  font-size: 28px;
+  text-align: center;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 14px;
+  margin: 40px 20px;
+}
+
+.filter-buttons div {
+  margin-bottom: 4px;
+  margin-right: 10px;
+}
+
+/* ------------------------------- 
+             $Main 
+   ------------------------------- */
+
+main {
+  margin: 0 40px 60px;
 }
 
 ul {
@@ -22,9 +80,40 @@ ul {
   padding: 0;
 }
 
-#movie-list {
+.movie-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 10px;
+  gap: 10px;
 }
 
+.movie-list li {
+  animation-name: filmitem;
+  animation-duration: 2.5s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes filmitem {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* ------------------------------- 
+             $Footer 
+   ------------------------------- */
+
+footer {
+  font-size: 12px;
+  font-style: italic;
+  border-top: 1px solid #fff;
+}
+
+/* ------------------------------- 
+          $Media queries
+   ------------------------------- */
+
+@media (min-width: 680px) {
+  .filter-buttons {
+    justify-content: space-between;
+    margin: 40px 0;
+  }
+}
