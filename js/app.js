@@ -1,8 +1,6 @@
 // Eindopdracht Pascal Pater
 // Javascript Advanced - Filmzoeker
 
-// check if database is accessible
-console.log(movies);
 
 // get the needed elements and classes
 const movieList = document.querySelector("#js-movie-list");
@@ -31,9 +29,11 @@ const createMovieLink = (movieID) => {
 
 // filter movies on title based on value send from clicked button
 // put result in an array and send to addMoviesToDom
+// use toLowerCase for movie titles so that the search field 
+// works both for 'Batman Returns' and 'batman returns'
 const filterMovies = (wordInMovieTitle) => {
   const getFilteredMovies = movies
-    .filter((movie) => movie.Title.includes(wordInMovieTitle))
+    .filter((movie) => movie.Title.toLowerCase().includes(wordInMovieTitle.toLowerCase()))
     .map((movie) => movie);
   addMoviesToDom(getFilteredMovies);
 };
@@ -47,11 +47,10 @@ const filterLatestMovies = () => {
   addMoviesToDom(getLatestMovies);
 };
 
-// listen for Enter in serach field
+// listen for Enter in search field
 // send value to filterMovies function
 searchField.addEventListener("keydown", (event) => {
   if (event.key == "Enter") {
-    console.log(event.target.value.toLowerCase());
     filterMovies(event.target.value);
   }
 });
@@ -84,8 +83,6 @@ const handleOnChangeEvent = (event) => {
     case "batman":
       filterMovies("Batman");
       break;
-    default:
-      console.log("all");
   }
 };
 
