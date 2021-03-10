@@ -7,6 +7,7 @@ console.log(movies);
 // get the needed elements and classes
 const movieList = document.querySelector("#js-movie-list");
 const radioButtons = document.querySelectorAll("input[name='film-filter']");
+const searchField = document.querySelector("input[name='film-search']");
 
 // get the url for the poster of each movie
 // create an li with an img element with the poster url as src
@@ -45,6 +46,15 @@ const filterLatestMovies = () => {
     .map((movie) => movie);
   addMoviesToDom(getLatestMovies);
 };
+
+// listen for Enter in serach field
+// send value to filterMovies function
+searchField.addEventListener("keydown", (event) => {
+  if (event.key == "Enter") {
+    console.log(event.target.value.toLowerCase());
+    filterMovies(event.target.value);
+  }
+});
 
 // remove all movie items
 // so filtered items will not be added 
