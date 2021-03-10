@@ -20,7 +20,7 @@ body {
   color: #fff;
   background-color: #000;
   display: grid;
-  grid-template-rows: min-content 1fr min-content;
+  grid-template-rows: min-content min-content min-content 1fr min-content;
   margin: 0 15px;
 }
 
@@ -32,6 +32,7 @@ body {
   position: relative;
   padding: 10px 0;
   border-bottom: 1px solid #fff;
+  margin-bottom: 10px;
 }
 
 .brand img {
@@ -48,17 +49,32 @@ h1 {
   margin: 0 0 0 50px;
 }
 
-h2 {
-  font-size: 28px;
+/* ------------------------------- 
+             $Intro 
+   ------------------------------- */
+
+.intro {
   text-align: center;
 }
+
+.intro p {
+  font-size: 14px;
+}
+
+.intro h2 {
+  font-size: 28px;
+}
+
+/* ------------------------------- 
+             $Nav 
+   ------------------------------- */
 
 .filter-buttons {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   font-size: 14px;
-  margin: 40px 20px;
+  margin: 20px;
 }
 
 .filter-buttons div {
@@ -114,6 +130,6 @@ footer {
 @media (min-width: 680px) {
   .filter-buttons {
     justify-content: space-between;
-    margin: 40px 0;
+    margin: 20px 0;
   }
 }
