@@ -52,6 +52,8 @@ const filterLatestMovies = () => {
 searchField.addEventListener("keydown", (event) => {
   if (event.key == "Enter") {
     filterMovies(event.target.value);
+    // when searching by title, clear possible previous selected radio buttons
+    radioButtons.forEach((radioButton) => radioButton.checked = false);
   }
 });
 
@@ -63,10 +65,12 @@ const removeAllMovies = () => {
   movieListItems.forEach((movieListItem) => movieListItem.remove());
 };
 
+// clear search field if used previously
 // receive the selected element
 // get the value of the selected button
 // send case to correct filter function
 const handleOnChangeEvent = (event) => {
+  searchField.value = "";
   switch (event.target.value) {
     case "latest":
       filterLatestMovies();
