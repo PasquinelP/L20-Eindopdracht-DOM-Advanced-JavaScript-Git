@@ -1,5 +1,7 @@
 # Eindopdracht Javascript Advanced: Filmzoeker 
 
+[Screenshots van Filmzoeker](#screenshots)
+
 ## Introductie
 
 Je gaat een een filmzoeker maken!
@@ -35,4 +37,16 @@ Aan deze eisen moet jouw project voldoen:
 
 **Focus je eerst op de functionaliteiten en JavaScript, voordat je gaat beginnen met stylen.**
 
+## Screenshots:
+
+### Filmzoeker
+![Eindopdracht Filmzoeker](./screenshot-eindopdracht-filmzoeker.png)
+
+### Filmzoeker filter
+![Eindopdracht Filmzoeker Filter](./screenshot-eindopdracht-filmzoeker-filter.png)
+
+### Filmzoeker zoeken
+![Eindopdracht Filmzoeker Zoeken](./screenshot-eindopdracht-filmzoeker-zoeken.png)
+### Filmzoeker responsive
+![Eindopdracht Filmzoeker responsive](./screenshot-eindopdracht-filmzoeker-responsive.png)
 
